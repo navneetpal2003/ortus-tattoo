@@ -1,19 +1,21 @@
-import React from "react";
-import Navbar from "./components/Navbar";
-import HeroSection from "./components/HeroSection";
-import Gallery from "./components/Gallery";
-import BookingForm from "./components/BookingForm";
-import Footer from "./components/Footer";
+import { useState } from 'react';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import About from './components/About';
+import Portfolio from './components/Portfolio';
+import BookingModal from './components/BookingModal';
 
 function App() {
+  const [isBookingOpen, setBookingOpen] = useState(false);
+
   return (
-    <main className="bg-black text-white font-sans">
-      <Navbar />
-      <HeroSection />
-      <Gallery />
-      <BookingForm />
-      <Footer />
-    </main>
+    <div className="font-sans">
+      <Header onBookClick={() => setBookingOpen(true)} />
+      <Hero onBookClick={() => setBookingOpen(true)} />
+      <About />
+      <Portfolio />
+      <BookingModal isOpen={isBookingOpen} onClose={() => setBookingOpen(false)} />
+    </div>
   );
 }
 
